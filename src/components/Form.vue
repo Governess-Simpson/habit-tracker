@@ -50,16 +50,31 @@ export default{
 
 .form h2 {
     font-size: 30px;
+    text-transform: capitalize;
 }
 
 .form label{
     font-size: 20px;
+    text-transform: capitalize;
 }
 
+
+input[type="radio"]+label:hover {
+  cursor: pointer;
+  border-color: #73daa1;
+  color: #73daa1;
+}
+
+input[type="radio"]:checked + label {
+  border-color: #00AD51;
+  color: #00AD51;
+}
 
 .radio_buttons {
     margin-bottom: 75px;
     margin-right: 10px;
+    width: 20px;
+    height: 20px;
 }
 
 
