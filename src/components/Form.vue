@@ -1,12 +1,15 @@
 <template>
-    <div>{{ question }}</div>
-    <!-- :key="index" is for performance-related concerns in Vue, could omit. iterate through all array values -->
-    <div v-for="(answer, index) in answers" :key="index">
-        <!-- define styling class + creates label/radio button for each array value. -->
-        <!-- name makes sure only one radio button can be pressed. id connects to label, value displays array content. -->
-        <!-- v-model defines that the value of the radio button can be sent to computed for additional processing. -->
-        <label :for="index" class="radio_buttons">{{ answer }}</label>
-        <input type="radio" :id="index" :value="answer" name="activityLevel" v-model="selectedAnswer">
+    <div class="form">
+        <h2>{{ question }}</h2>
+        <br>
+        <!-- :key="index" is for performance-related concerns in Vue, could omit. iterate through all array values -->
+        <div v-for="(answer, index) in answers" :key="index">
+            <!-- define styling class + creates label/radio button for each array value. -->
+            <!-- name makes sure only one radio button can be pressed. id connects to label, value displays array content. -->
+            <!-- v-model defines that the value of the radio button can be sent to computed for additional processing. -->
+            <input type="radio" :id="index" :value="answer" name="activityLevel" class="radio_buttons" v-model="selectedAnswer">
+            <label :for="index" class="radio_labels">{{ answer }}</label>
+        </div>
     </div>
 </template>
 
@@ -32,3 +35,32 @@ export default{
     }
 }
 </script>
+
+
+<style scoped>
+
+.form {
+    min-height: 200px;
+    width: 650px;
+    text-align: left;
+    padding: 15px;
+    margin: 0 100px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form h2 {
+    font-size: 30px;
+}
+
+.form label{
+    font-size: 20px;
+}
+
+
+.radio_buttons {
+    margin-bottom: 75px;
+    margin-right: 10px;
+}
+
+
+</style>

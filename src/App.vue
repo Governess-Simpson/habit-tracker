@@ -1,5 +1,4 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
   <!-- Passes in the data values into Form.vue, alongside listening for when a new radio button is pressed. -->
   <Form :question="question" :answers="answers" @update="updatedSelectedAnswer"/>
   <div>
