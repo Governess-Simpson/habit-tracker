@@ -1,15 +1,34 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- Passes in the data values into Form.vue, alongside listening for when a new radio button is pressed. -->
+  <Form :question="question" :answers="answers" @update="updatedSelectedAnswer"/>
+  <div>
+    {{ selectedAnswer }}
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Form from './components/Form.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Form
+  },
+  data() {
+    return {
+      question: "What did you accomplish today?",
+      answers: ["I put my gym clothes on.", "I went inside the gym.", "I performed light activity (cardio/stretch, < 30 minutes).", "I performed heavy cardio (> 30 minutes).", "I lifted weights.", "I performed cardio AND weights."],
+      selectedAnswer: '',
+    }
+  },
+  /* 
+  When a new radio button is pressed, that value is updated to "selectedAnswer".
+  */
+  methods: {
+    updatedSelectedAnswer(newAnswer){
+      this.selectedAnswer = newAnswer
+    }
   }
 }
 </script>
