@@ -3,7 +3,7 @@
         <div v-if="month.id === currentMonth">
             <div class="gridView">
                 <div v-for="day in month.days">
-                    <div :id="createDivId(month.id, day)" class="noColor">{{ day }}</div>
+                    <div :id="createDivId(month.id, day)" class="noColor">&nbsp;</div>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@ export default {
 <style scoped>
 
 .gridView {
-    margin: -600px 850px;
+    margin: -550px 875px;
     display: grid;
     width: 500px;
     height: 500px;

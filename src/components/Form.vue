@@ -10,6 +10,8 @@
             <input type="radio" :id="index" :value="answer" name="activityLevel" class="radio_buttons" v-model="selectedAnswer">
             <label :for="index" class="radio_labels">{{ answer }}</label>
         </div>
+        <hr>
+        <button class="btn">SUBMIT</button>
     </div>
 </template>
 
@@ -71,11 +73,34 @@ input[type="radio"]:checked + label {
 }
 
 .radio_buttons {
-    margin-bottom: 75px;
+    margin-bottom: 50px;
     margin-right: 10px;
     width: 20px;
     height: 20px;
 }
 
+.btn {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 35px;
+    width: 150px;
+    border-radius: 15px;
+    border: 0.5px solid black;
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 9px #999;
+    position: absolute;
+    left: 350px;
+    bottom: 50px;
+}
+.btn:active {
+  background-color: #00AD51;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.btn:hover {
+    background-color: #73daa1;
+}
 
 </style>
