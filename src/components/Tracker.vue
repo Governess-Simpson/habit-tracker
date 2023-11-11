@@ -1,44 +1,55 @@
 <template>
-    <div class="container">
-        <div v-for="month in months">
-            <div v-for="day in month.days">
-                <component is="div" class="container" :id="makeID">{{ id }}</component>
-                <div>{{ id }}</div>
-<!--                 <div>
-                    {{ month.id }} {{ day }}
-                </div> -->
+    <div v-for="month in months">
+        <div v-if="month.id === currentMonth">
+            <div class="gridView">
+                <div v-for="day in month.days">
+                    <div :id="createDivId(month.id, day)"></div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { tSThisType } from '@babel/types';
+
 
 
 export default {
     name: "Tracker",
     props: {
         months: Array,
-        timestamp: String
+        currentDate: Number,
+        currentMonth: String
+    },
+    data() {
+        return {
+            id: 1
+        }
     },
     methods: {
-        makeID() {
-            console.log(this.month, this.day)
-            return this.month + this.day 
+        createDivId(month, day) {
+                this.id = month + day
+            }
         }
-    }
-
 }
 </script>
 
 
 <style scoped>
-.container {
+
+.gridView {
+    margin: -200px 500px;
+    border: solid red;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(5px, 1fr));
-    gap: .5em;
-    padding: 1em;
-}
+    width: 200px;
+    height: 100px;
+    grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+/*     gap: .5em;
+ */   
+/*     padding: 1em;
+ */}
 
 </style>
 <!--   <component is="div">This is a DIV element</component>

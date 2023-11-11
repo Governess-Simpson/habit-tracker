@@ -1,7 +1,7 @@
 <template>
   <!-- Passes in the data values into Form.vue, alongside listening for when a new radio button is pressed. -->
   <Form :question="question" :answers="answers" @update="updatedSelectedAnswer" />
-  <Tracker :months="months" :timestamp="timestamp"/>
+  <Tracker :months="months" :currentDate="currentDate" :currentMonth="currentMonthName"/>
 </template>
 
 <script>
@@ -19,7 +19,8 @@ export default {
       question: "What did you accomplish today?",
       answers: ["I put my gym clothes on.", "I went inside the gym.", "I performed light activity (cardio/stretch, < 30 minutes).", "I performed heavy cardio (> 30 minutes).", "I lifted weights.", "I performed cardio AND weights."],
       selectedAnswer: '',
-      timestamp: '',
+      currentDate: 0,
+      currentMonth: '',
       months: [
             {
               id: "January",
@@ -84,11 +85,45 @@ export default {
     },
     getNow() {
           const today = new Date();
-          const time = (today.getMonth()+1) + '-' + today.getDate()
-          this.timestamp = time
+          const currentMonth = today.getMonth()+1
+          const currentDate = today.getDate()
+          this.currentDate = currentDate
+          this.currentMonth = currentMonth
         }
+  },
+  computed: {
+    currentMonthName() {
+      switch(this.currentMonth){
+        case 1:
+          return "January"
+        case 2:
+          return "February"
+        case 3:
+          return "March"
+        case 4:
+          return "April"
+        case 5:
+          return "May"
+        case 6:
+          return "June"
+        case 7:
+          return "July"
+        case 8:
+          return "August"
+        case 9:
+          return "September"
+        case 10:
+          return "October"
+        case 11:
+          return "November"
+        case 12:
+          return "December"
+        default:
+          break
+      }
       }
     }
+  }
 </script>
 
 <style>
