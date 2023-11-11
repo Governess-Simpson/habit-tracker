@@ -3,7 +3,7 @@
         <div v-if="month.id === currentMonth">
             <div class="gridView">
                 <div v-for="day in month.days">
-                    <div :id="createDivId(month.id, day)" class="noColor">&nbsp;</div>
+                    <div :id="createDivId(month.id, day)" class="noColor" v-bind:style="[ isOpacity ? {'background-color': 'red', 'opacity': this.opacity} : '']">&nbsp;</div>
                 </div>
             </div>
         </div>
@@ -12,24 +12,31 @@
 
 <script>
 
-
 export default {
     name: "Tracker",
     props: {
         months: Array,
         currentDate: Number,
-        currentMonth: String
+        currentMonth: String,
+        opacity: Number
     },
     data() {
         return {
-            id: 1
+            id: 1,
+            isOpacity: false
         }
     },
     methods: {
         createDivId(month, day) {
                 this.id = month + day
-            }
+       }
+    },
+    watch: {
+        opacity(newVal, oldVal){
+            this.isOpacity = true
+            console.log('tracker test', oldVal, newVal, this.isOpacity)
         }
+    }
 }
 </script>
 
@@ -52,6 +59,7 @@ export default {
     width: 100px;
     justify-content: center;
 }
+
 
 </style>
 <!--   <component is="div">This is a DIV element</component>

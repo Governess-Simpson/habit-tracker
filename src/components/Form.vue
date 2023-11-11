@@ -11,7 +11,7 @@
             <label :for="index" class="radio_labels">{{ answer }}</label>
         </div>
         <hr>
-        <button class="btn">SUBMIT</button>
+        <button class="btn" @click="updateStoreEvent">SUBMIT</button>
     </div>
 </template>
 
@@ -24,6 +24,16 @@ export default{
         question: String,
         answers: Array
     },
+    data() {
+        return {
+            selected: ''
+        }
+    },
+    methods: {
+        updateStoreEvent(){
+            this.$emit('update', this.selected);
+        }
+    },
     computed: {
         /* Connects to v-model. Defines setter (custom emit function to send value to App.vue) and getter functions. */
         selectedAnswer: {
@@ -31,7 +41,7 @@ export default{
                 return this.answer
             },
             set(val) {
-                this.$emit('update', val);
+                this.selected = val;
             } 
         }
     }

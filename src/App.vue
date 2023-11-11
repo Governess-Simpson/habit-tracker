@@ -1,7 +1,7 @@
 <template>
   <!-- Passes in the data values into Form.vue, alongside listening for when a new radio button is pressed. -->
   <Form :question="question" :answers="answers" @update="updatedSelectedAnswer" />
-  <Tracker :months="months" :currentDate="currentDate" :currentMonth="currentMonthName"/>
+  <Tracker :months="months" :currentDate="currentDate" :currentMonth="currentMonthName" :opacity="opacity"/>
 </template>
 
 <script>
@@ -21,6 +21,7 @@ export default {
       selectedAnswer: '',
       currentDate: 0,
       currentMonth: '',
+      opacity: 0,
       months: [
             {
               id: "January",
@@ -70,6 +71,32 @@ export default {
               id: "December",
               days: 31
             }
+          ],
+      opacityLevel: [
+            {
+              id: "I put my gym clothes on.",
+              opacity: .1
+            },
+            {
+              id: "I went inside the gym.",
+              opacity: .2
+            },
+            {
+              id: "I performed light activity (cardio/stretch, < 30 minutes).",
+              opacity: .33
+            },
+            {
+              id: "I performed heavy cardio (> 30 minutes).",
+              opacity: .5
+            },
+            {
+              id: "I lifted weights.",
+              opacity: .75
+            },
+            {
+              id: "I performed cardio AND weights.",
+              opacity: 1
+            }
           ]
         }
       },
@@ -81,7 +108,10 @@ export default {
   */
   methods: {
     updatedSelectedAnswer(newAnswer){
-      this.selectedAnswer = newAnswer
+      this.selectedAnswer = newAnswer;
+      this.opacityLevel.forEach(entry => {
+                entry.id === this.selectedAnswer ? this.opacity = entry.opacity : console.log("Error. Please review your code.") 
+            })
     },
     getNow() {
           const today = new Date();
