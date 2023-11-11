@@ -6,7 +6,7 @@
                 <div v-for="day in month.days">
                     <!-- If an opacity value has been defined at least once (aka, someone has made a submission), update the background color and opacity accordingly. Space is to maintain the grid-like appearance. -->
                     <KeepAlive>
-                        <div :id="createDivId(month.id, day)" class="noColor" v-bind:style="[ isOpacity && day === currentDate ? {'background-color': 'red', 'opacity': this.opacity} : '']">&nbsp;</div>
+                        <div :id="createDivId(month.id, day)" class="noColor" v-bind:style="[ isOpacity && day === currentDate ? {'background-color': '#00AD51', 'opacity': this.opacity} : '']">&nbsp;</div>
                     </KeepAlive>
                 </div>
             </div>
