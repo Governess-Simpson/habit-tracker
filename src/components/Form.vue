@@ -11,6 +11,7 @@
             <label :for="index" class="radio_labels">{{ answer }}</label>
         </div>
         <hr>
+        <!-- On click, the selected value is emitted to App.vue. -->
         <button class="btn" @click="updateStoreEvent">SUBMIT</button>
     </div>
 </template>

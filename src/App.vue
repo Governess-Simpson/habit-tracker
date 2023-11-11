@@ -72,6 +72,7 @@ export default {
               days: 31
             }
           ],
+      /* Varying opacity levels of the cells depending on the option the user selected. */
       opacityLevel: [
             {
               id: "I put my gym clothes on.",
@@ -104,13 +105,13 @@ export default {
       setInterval(this.getNow, 1000);
     },
   /* 
-  When a new radio button is pressed, that value is updated to "selectedAnswer".
+  When a new radio button is pressed, that value is updated to "selectedAnswer". The opacity of the cell is also determined based on the selectedAnswer.
   */
   methods: {
     updatedSelectedAnswer(newAnswer){
       this.selectedAnswer = newAnswer;
       this.opacityLevel.forEach(entry => {
-                entry.id === this.selectedAnswer ? this.opacity = entry.opacity : console.log("Error. Please review your code.") 
+                entry.id === this.selectedAnswer ? this.opacity = entry.opacity : console.log() 
             })
     },
     getNow() {

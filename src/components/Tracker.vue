@@ -1,8 +1,10 @@
 <template>
+    <!-- Iterate through all months, and only display the month/days that we are currently in. -->
     <div v-for="month in months">
         <div v-if="month.id === currentMonth">
             <div class="gridView">
                 <div v-for="day in month.days">
+                    <!-- If an opacity value has been defined at least once (aka, someone has made a submission), update the background color and opacity accordingly. Space is to maintain the grid-like appearance. -->
                     <div :id="createDivId(month.id, day)" class="noColor" v-bind:style="[ isOpacity ? {'background-color': 'red', 'opacity': this.opacity} : '']">&nbsp;</div>
                 </div>
             </div>
@@ -23,18 +25,20 @@ export default {
     data() {
         return {
             id: 1,
+            /* Automatically set to false when no button is pressed; will always remain true after the first selection. */
             isOpacity: false
         }
     },
+    /* Creates a unique Div ID for each cell that can be referenced later. */
     methods: {
         createDivId(month, day) {
                 this.id = month + day
        }
     },
+    /* Watching for whenever the opacity value changes (aka, when the submit button is clicked), and adjusting the isOpacity varaible. Probably can refactor since it's redundant after the first click. */
     watch: {
         opacity(newVal, oldVal){
             this.isOpacity = true
-            console.log('tracker test', oldVal, newVal, this.isOpacity)
         }
     }
 }
