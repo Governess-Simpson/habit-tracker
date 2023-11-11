@@ -3,7 +3,7 @@
         <div v-if="month.id === currentMonth">
             <div class="gridView">
                 <div v-for="day in month.days">
-                    <div :id="createDivId(month.id, day)"></div>
+                    <div :id="createDivId(month.id, day)" class="noColor">{{ day }}</div>
                 </div>
             </div>
         </div>
@@ -11,8 +11,6 @@
 </template>
 
 <script>
-import { tSThisType } from '@babel/types';
-
 
 
 export default {
@@ -39,17 +37,21 @@ export default {
 <style scoped>
 
 .gridView {
-    margin: -200px 500px;
-    border: solid red;
+    margin: -600px 850px;
     display: grid;
-    width: 200px;
-    height: 100px;
-    grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+    width: 500px;
+    height: 500px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-/*     gap: .5em;
- */   
-/*     padding: 1em;
- */}
+}
+
+.noColor {
+    display: flex;
+    border: 1px solid black;
+    height: 85px;
+    width: 100px;
+    justify-content: center;
+}
 
 </style>
 <!--   <component is="div">This is a DIV element</component>
